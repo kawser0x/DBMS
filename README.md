@@ -67,7 +67,7 @@ MySQL Server installed and running.
 
 1. Clone the Repository
 
-git clone [https://github.com/yourusername/news-management-system.git](https://github.com/yourusername/news-management-system.git)
+git clone [(https://github.com/kawser0x/DBMS/blob/main/README.md)](https://github.com/kawser0x/DBMS/blob/main/README.md)
 cd news-management-system
 
 2. Install Dependencies
@@ -79,22 +79,22 @@ pip install mysql-connector-python customtkinter
 3. Database Setup
 
 Open your MySQL Workbench or Command Line.
-Run the script provided in database_setup.sql (included in this repo) to create the database and tables.
+Run the script provided in news_management_f.sql  to create the database and tables.
 
 4. Configuration
 
 Open news_gui_manager.py and update the database connection settings at the top of the file:
 conn = mysql.connector.connect(
     host="localhost",
-    user="root",          # Your MySQL Username
-    password="password",  # Your MySQL Password
-    database="news"
+    user="root",
+    password="password", 
+    database="news_manage"
 )
 
 
 5. Run the App
 
-python news_gui_manager.py
+python DBMS_Final_Project.py
 
 
 📸 Usage Guide
