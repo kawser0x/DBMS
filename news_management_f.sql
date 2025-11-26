@@ -1,0 +1,287 @@
+USE news_manage ;
+
+-- CREATE TABLE Authors (
+--     author_id INT PRIMARY KEY AUTO_INCREMENT,
+--     name VARCHAR(100) NOT NULL,
+--     email VARCHAR(100) UNIQUE NOT NULL,
+--     bio TEXT,
+--     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+-- );
+
+-- CREATE TABLE Categories (
+--     category_id INT PRIMARY KEY AUTO_INCREMENT,
+--     category_name VARCHAR(50) UNIQUE NOT NULL
+-- );
+
+-- CREATE TABLE Articles (
+--     article_id INT PRIMARY KEY AUTO_INCREMENT,
+--     title VARCHAR(255) NOT NULL,
+--     content TEXT NOT NULL,
+--     author_id INT,
+--     category_id INT,
+--     publication_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+--     is_published BOOLEAN DEFAULT FALSE,
+--     FOREIGN KEY (author_id) REFERENCES Authors(author_id) ON DELETE SET NULL,
+--     FOREIGN KEY (category_id) REFERENCES Categories(category_id) ON DELETE RESTRICT
+-- );
+
+-- INSERT INTO Authors (name, email, bio) VALUES
+-- ('Rabindranath Tagore', 'rabi.tagore@example.com', 'A Bengali polymath who reshaped Bengali literature and music, as well as Indian art. He was the first non-European to win the Nobel Prize in Literature.'),
+-- ('Kazi Nazrul Islam', 'kazi.nazrul@example.com', 'The National Poet of Bangladesh, known as the "Rebel Poet" for his fiery spirit and strong anti-establishment themes.'),
+-- ('Jasimuddin', 'jasim.uddin@example.com', 'A celebrated Bengali poet known for his folk-centric poetry, often depicting the life of rural Bangladesh.'),
+-- ('Humayun Ahmed', 'humayun.ahmed@example.com', 'One of the most popular Bangladeshi authors of the 20th century, known for his prolific work in novels, short stories, and films.'),
+-- ('Begum Rokeya', 'begum.rokeya@example.com', 'A leading Muslim feminist and social reformer in Bengal, known for her satirical writings and advocacy for women’s education.'),
+-- ('Syed Mujtaba Ali', 'syed.ali@example.com', 'A prominent Bengali author, journalist, and academic, celebrated for his travelogues and witty, conversational prose.'),
+-- ('Shamsur Rahman', 'shamsur.rahman@example.com', 'A leading Bengali poet of the post-Tagore era, whose work often reflected the political and social turbulence of Bangladesh.'),
+-- ('Akhtaruzzaman Elias', 'elias.akhtar@example.com', 'A highly respected modern Bangladeshi novelist and short story writer, known for his complex narratives and deep exploration of social reality.'),
+-- ('Tahmima Anam', 'tahmima.anam@example.com', 'A contemporary Bangladeshi-British novelist, author of the Bengal Trilogy, exploring the history of Bangladesh and the War of Liberation.'),
+-- ('Selina Hossain', 'selina.hossain@example.com', 'A prominent Bangladeshi novelist and short story writer, known for her powerful narratives on women’s issues and socio-political themes.');
+
+
+-- INSERT INTO Categories (category_name) VALUES
+-- ('Novel'),
+-- ('Short Story'),
+-- ('Poetry'),
+-- ('Drama'),
+-- ('Travelogue'),
+-- ('Biography'),
+-- ('Science Fiction'),
+-- ('Children\'s Literature'),
+-- ('Historical Fiction'),
+-- ('Essay/Criticism');
+
+-- INSERT INTO Articles (title, content, author_id, category_id, is_published) VALUES
+
+-- -- -------------------------------------------------------------------------
+-- -- AUTHOR 1: Rabindranath Tagore (Category IDs: 3, 2, 10)
+-- -- -------------------------------------------------------------------------
+-- (
+--     'Gitanjali: A Summary of Song Offerings',
+--     'This pivotal collection of song-offerings marked Rabindranath Tagore\'s breakthrough onto the global literary stage, earning him the Nobel Prize in Literature in 1913. The poems are characterized by their profound spiritual longing and lyrical exploration of the bond between the individual soul and the divine. They weave together the traditions of ancient Vedic philosophy and the accessible simplicity of folk music, transcending cultural boundaries. The central theme revolves around a quiet devotion and a search for grace, often employing nature as a metaphor for spiritual reality. It is a masterpiece that perfectly encapsulates the poetic depth and philosophical richness of the Bengali literary tradition, establishing Tagore as a universal humanist.',
+--     1, 3, TRUE
+-- ),
+-- (
+--     'The Postmaster (Short Story Analysis)',
+--     'This is one of Tagore\'s most poignant short stories, focusing on the profound isolation felt by a young, educated man from Calcutta who is assigned the duty of postmaster in a remote Bengal village. His only genuine human connection forms with Ratan, a young, orphaned girl who helps him with household chores. The story beautifully captures the subtle yet devastating class and social barriers that prevent true intimacy, and the heartbreak of Ratan when the postmaster leaves without a word. It is a masterful study of loneliness, dependency, and the often-unspoken tragedies of common village life, emphasizing the emotional chasm between the urban elite and the rural poor.',
+--     1, 2, TRUE
+-- ),
+-- (
+--     'A Critique of Western Materialism',
+--     'This collection of essays and lectures serves as Tagore\'s philosophical rebuttal to the West\'s increasing focus on industrialism and materialism at the expense of spiritual and communal values. He argues that modern civilization has become overly centered on political power and economic competition, leading to widespread unhappiness and moral decay. Tagore advocates for a deeper connection to nature, a revival of traditional Eastern wisdom, and an emphasis on creative expression and holistic education (as championed at his Visva-Bharati University). This work is essential for understanding his worldview, which prioritizes the unity of man with nature and the universal brotherhood of humanity over nationalistic or economic pursuits.',
+--     1, 10, TRUE
+-- ),
+
+-- -- -------------------------------------------------------------------------
+-- -- AUTHOR 2: Kazi Nazrul Islam (Category IDs: 3, 2, 6)
+-- -- -------------------------------------------------------------------------
+-- (
+--     'Bidrohi (The Rebel): The Full Poem',
+--     'Published in 1922, "Bidrohi" (The Rebel) is Kazi Nazrul Islam\'s most iconic and revolutionary poem, instantly cementing his place as the voice of defiance in colonial Bengal. The poem is a magnificent, stream-of-consciousness outpouring where the poet declares himself to be every force of nature and rebellion—from the untamed wind to the fire of the final judgement. It is a powerful assertion of the self\'s limitless potential and an uncompromising challenge to all forms of oppression, injustice, and arbitrary authority. Nazrul skillfully merges mythological figures and historical events to create a persona that is both destructive and constructive, symbolizing the necessary upheaval for societal change. The poem remains a core text for Bengali nationalism and human liberation.',
+--     2, 3, TRUE
+-- ),
+-- (
+--     'The Shadow of the Jinn (Short Story)',
+--     'Nazrul, while primarily known for his poetry, occasionally ventured into prose that often fused mystical elements with stark social critique. "The Shadow of the Jinn" is a chilling short story that explores themes of superstition, fate, and the psychological impact of the supernatural on village life. The narrative weaves together Bengali folklore, the deeply held beliefs in spirits and genies (jinn), and the social anxieties of the community. Unlike conventional ghost stories, Nazrul uses the fear of the unknown to reflect the real-world oppression and ignorance prevalent among the masses. It is a powerful example of how he used diverse literary forms to challenge conservative thinking and illuminate the darker corners of the collective psyche.',
+--     2, 2, TRUE
+-- ),
+-- (
+--     'A Life Dedicated to Music and Poetry',
+--     'This biographical sketch traces the tumultuous and brief, but immensely influential, life of Kazi Nazrul Islam, from his humble origins and early experiences as a baker and a soldier in the British Indian Army, to his emergence as the National Poet. The article details his radical defiance against the British Raj, his complex relationship with religion (combining Hindu and Islamic traditions), and his unparalleled contributions to Bengali music (Nazrul Geeti). It highlights the tragedy of his final years, marked by a debilitating neurological illness that silenced his prolific voice, leaving behind a legacy of revolutionary literature and music that continues to inspire the people of Bangladesh.',
+--     2, 6, TRUE
+-- ),
+
+-- -- -------------------------------------------------------------------------
+-- -- AUTHOR 3: Jasimuddin (Category IDs: 3, 10, 4)
+-- -- -------------------------------------------------------------------------
+-- (
+--     'Nakshi Kanthar Math (The Embroidered Quilt)',
+--     'This masterpiece of Bengali pastoral poetry narrates the tragic romance of Rupa, a young farmer, and Saju, his bride, set against the backdrop of rural Bangladesh. Their idyllic love is shattered by a sequence of unfortunate events, leading to Rupa\'s exile and Saju\'s heartbreaking fate. The core of the story lies in the "Nakshi Kantha" (embroidered quilt) that Saju painstakingly stitches. Into this quilt, she weaves the entire story of their relationship, their separation, and her enduring sorrow, turning the cloth into a narrative memorial of their lost life. Jasimuddin beautifully captures the dialect, folklore, and rhythms of agrarian Bengal, providing a poignant and timeless depiction of love and loss in the village setting.',
+--     3, 3, TRUE
+-- ),
+-- (
+--     'Rural Bengal and the Folk Tradition',
+--     'Jasimuddin’s critical essays often serve as a passionate defense and celebration of the Bengali folk tradition, which he felt was being neglected by the rising urban literary elite. This essay meticulously documents the richness of rural life, including its ballads, music, crafts, and social customs, arguing that the true soul of Bengal resides in its villages. He critiques the colonial influence that prioritized Western literary forms over the indigenous Puthis and Jari Gaan, advocating for a return to native sources of inspiration. The essay is a crucial text for understanding the literary movement that sought to root Bengali literature firmly in its own agrarian, cultural soil, ensuring the continuity of the region’s unique artistic heritage.',
+--     3, 10, TRUE
+-- ),
+-- (
+--     'The Drama of the Village Fair (Short Play)',
+--     'This short dramatic work captures the vibrant, chaotic, and transient atmosphere of a rural Bengali village fair (mela), a central social and economic event. The play features an ensemble cast of common people—from itinerant merchants and performers to local farmers and curious children—whose interactions reveal the social hierarchy, humor, and underlying struggles of village life. Through lively dialogue and dynamic staging, Jasimuddin brings to life the temporary suspension of routine that the fair offers, where commerce, entertainment, and social bonding intersect. It is a powerful, yet concise, piece that reflects his commitment to representing the authentic voices and lived experiences of the Bengali peasantry in all his work.',
+--     3, 4, FALSE
+-- ),
+
+-- -- -------------------------------------------------------------------------
+-- -- AUTHOR 4: Humayun Ahmed (Category IDs: 1, 2, 7, 8)
+-- -- -------------------------------------------------------------------------
+-- (
+--     'Bohubrihi (Novel Review and Analysis)',
+--     'Originally a highly successful television drama, this novel satirizes the social and political climate of Bangladesh through the lens of a bizarre, yet charming, family. The story centers around a retired eccentric professor and his family\'s unconventional habit of adopting strays, most famously a parrot whom the professor teaches to chant the phrase "Tui Razakar" (You are a collaborator). This seemingly simple gag is a profound, darkly comic critique of the moral compromises made during and after the Liberation War. Humayun Ahmed masterfully blends light-hearted domestic humor with sharp socio-political commentary, making it an enduring favorite that explores the nature of patriotism, deceit, and integrity in post-independence society.',
+--     4, 1, TRUE
+-- ),
+-- (
+--     'The Ghost and the Moon (Short Story)',
+--     'This short story is a quintessential example of Humayun Ahmed\'s ability to blend the commonplace with the mildly supernatural, a genre he virtually defined in Bengali literature. The narrative typically features a soft-spoken, often slightly detached protagonist who encounters a ghostly or paranormal phenomenon in a mundane setting, leading to quiet reflection rather than horror. This particular story explores the gentle melancholy of a lingering spirit and its connection to the cycles of nature, symbolized by the moon. Ahmed uses these encounters not for shock value, but to explore human loneliness, the absurdity of life, and the persistent mystery that underlies our rational world, captivating millions of readers with his unique, simple prose.',
+--     4, 2, TRUE
+-- ),
+-- (
+--     'Mishir Ali and the Paranormal',
+--     'This article is dedicated to Mishir Ali, one of Humayun Ahmed’s most enduring characters—a reclusive, rationalist psychology professor who specializes in investigating seemingly paranormal or supernatural events. The article discusses how Ahmed uses Mishir Ali\'s methodical approach to debunk or provide psychological explanations for phenomena like ghosts, telepathy, or unexplained occurrences. However, the true genius lies in the character’s quiet acknowledgment that not everything is reducible to science, creating a compelling tension between faith and logic. Mishir Ali stories effectively combine elements of psychological thriller, mystery, and a touch of the uncanny, making them highly popular among readers of all ages.',
+--     4, 7, TRUE
+-- ),
+-- (
+--     'Simple Science for Young Minds',
+--     'Humayun Ahmed was not only a novelist but also a dedicated educator and science enthusiast, leading him to write several books intended to make complex scientific concepts accessible and fun for children. This article covers one such work, which explains fundamental principles of physics and biology using simple language, relatable analogies, and engaging stories. He believed that the spirit of scientific inquiry was essential for national progress, and his works in this genre are designed to ignite curiosity without the intimidating formality of a textbook. This commitment reflects his desire to inspire the next generation to appreciate both the arts and the rigorous logic of the natural world.',
+--     4, 8, FALSE
+-- ),
+
+-- -- -------------------------------------------------------------------------
+-- -- AUTHOR 5: Begum Rokeya (Category IDs: 7, 10, 6, 4)
+-- -- -------------------------------------------------------------------------
+-- (
+--     'Sultana\'s Dream: The Utopian Vision',
+--     'Written in 1905, this groundbreaking short story is a utopian feminist science fiction narrative, centuries ahead of its time. The protagonist, Sultana, dreams of a world called Ladyland, where men are confined indoors (Purdah) and women govern every aspect of society, utilizing solar power and air travel to create a peaceful, efficient, and technologically advanced society. Rokeya used this fantasy to subtly but powerfully critique the patriarchal oppression and forced ignorance of women in her contemporary Bengal. It serves as both a dazzling work of imagination and a foundational text for feminist thought in South Asia, arguing that women\'s intellectual and physical freedom is the key to societal progress and true enlightenment.',
+--     5, 7, TRUE
+-- ),
+-- (
+--     'The Obstacles to Women\'s Education',
+--     'In this influential series of essays, Begum Rokeya passionately and rationally dismantles the religious and social arguments used by the conservative elite to deny women access to education. She uses sharp wit, compelling logic, and personal experience to demonstrate that the root cause of women\'s subjugation is ignorance, which is perpetuated by barring them from learning. She famously argued that women were not inherently inferior but were systematically held back, equating the denial of education to a form of imprisonment. This piece serves as a core text for the early South Asian feminist movement, demanding not just basic literacy, but full intellectual and professional equality for women in all spheres of life.',
+--     5, 10, TRUE
+-- ),
+-- (
+--     'A Biographical Note on Rokeya Sakhawat Hossain',
+--     'This note chronicles the extraordinary life of Begum Rokeya, focusing on her transition from a sheltered aristocratic life to becoming a pioneering educator and social reformer in the early 20th century. It details her marriage to Sakhawat Hossain, who encouraged her intellectual pursuits, and her subsequent establishment of the Sakhawat Memorial Girls\' School. The biography highlights the immense courage and persistence required to advocate for women\'s rights in a highly restrictive society, facing constant threats and social ostracism. Her life story is a testament to the power of conviction, showing how one woman\'s dedication fundamentally changed the landscape of female empowerment and education in Bengal.',
+--     5, 6, TRUE
+-- ),
+-- (
+--     'A Play on the Bengal Famine',
+--     'This hypothetical dramatic work, consistent with Rokeya\'s commitment to social critique, would use the tragic backdrop of the 1943 Bengal Famine to expose the profound moral and administrative failings of the colonial government and the opportunistic local landlords. The play would focus on the suffering of women and children, whose vulnerability was cruelly exposed by the systemic hunger and neglect. It would be structured as a powerful, unsentimental commentary on the politics of scarcity, where human dignity is stripped away by starvation and neglect. The piece would function not just as historical documentation but as a fiery indictment of a system that privileged power and profit over the lives of millions of common people.',
+--     5, 4, FALSE
+-- ),
+
+-- -- -------------------------------------------------------------------------
+-- -- AUTHOR 6: Syed Mujtaba Ali (Category IDs: 5, 2, 10)
+-- -- -------------------------------------------------------------------------
+-- (
+--     'In the Land of the Maharajas (Travelogue)',
+--     'Syed Mujtaba Ali, renowned for his erudite wit and conversational style, provides a brilliant travelogue based on his experiences and extensive travels across India and other parts of the subcontinent. This collection is not merely a record of places, but a deeply personal, philosophical, and humorous commentary on people, cultures, history, and linguistic subtleties. He effortlessly combines scholarship with street wisdom, offering sharp observations that are often interlaced with anecdotes and self-deprecating humor. His prose is a masterclass in conversational storytelling, making complex cultural phenomena accessible and engaging to the common reader. The work is valued for its unique blend of autobiography, history, and literary criticism, all captured through the eyes of a seasoned global citizen.',
+--     6, 5, TRUE
+-- ),
+-- (
+--     'Chacha Kahini: Wit and Wisdom',
+--     'This beloved collection, "Chacha Kahini" (Tales of an Uncle), showcases Syed Mujtaba Ali’s unparalleled wit, erudition, and charmingly conversational narrative voice. The stories, often told through the persona of a worldly uncle, are loosely structured anecdotes and vignettes that blend personal reflection with biting social satire. Ali effortlessly transitions between languages (Bengali, English, Arabic, Persian), classical references, and contemporary observations, making his prose both highly scholarly and utterly accessible. The collection is celebrated for its ability to deliver profound, philosophical insights into culture, politics, and human nature, all wrapped in a cloak of gentle humor and intellectual playfulness.',
+--     6, 2, TRUE
+-- ),
+-- (
+--     'Language and Culture in Bengal (Essay)',
+--     'In this insightful essay, Syed Mujtaba Ali delves into the complex role of the Bengali language as the carrier of culture, identity, and history. He analyzes the linguistic influences that have shaped Bengali—from Sanskrit and Persian to English—and argues for a nuanced, non-purist appreciation of its composite nature. He critiques the zealotry of linguistic nationalism while simultaneously defending the central importance of the mother tongue to intellectual freedom and emotional expression. This piece is a significant contribution to the debate on linguistic politics in the subcontinent, advocating for a broad, inclusive understanding of cultural heritage that embraces both local tradition and global exchange.',
+--     6, 10, TRUE
+-- ),
+
+-- -- -------------------------------------------------------------------------
+-- -- AUTHOR 7: Shamsur Rahman (Category IDs: 3, 9, 3)
+-- -- -------------------------------------------------------------------------
+-- (
+--     'Freedom, Oh Freedom (Poem Analysis)',
+--     'A profoundly moving and politically charged poem, "Freedom, Oh Freedom" is one of Shamsur Rahman\'s most direct responses to the political turbulence and the heroic struggle for the Liberation of Bangladesh in 1971. The poem functions as both a lament for the suffering endured under oppression and a defiant rallying cry for independence. Rahman often employs simple, powerful imagery—such as the image of the common man, the river, or the city of Dhaka—to represent the aspirations of the nation. It reflects the poet\'s role as a conscience of the state, articulating the pain, hope, and ultimate triumph of a people fighting for their identity and sovereignty. This poem is a core piece of literary evidence from the nation\'s founding moment.',
+--     7, 3, TRUE
+-- ),
+-- (
+--     'Historical Context of Dhaka',
+--     'Shamsur Rahman, though primarily a poet, often grounded his poetic reflections in the physical and historical reality of Dhaka, his beloved city. This piece, written in a historical or quasi-fictional style, explores the transformation of Dhaka from a Mughal provincial capital and a quiet colonial outpost into the politically charged, bustling metropolis it became. It details the various political movements that found their epicenter in the city, from the Language Movement of 1952 to the Liberation War of 1971. The narrative treats the city itself as a living character, whose streets, buildings, and rivers bear witness to the tumultuous birth of a new nation and the enduring resilience of its people.',
+--     7, 9, FALSE
+-- ),
+-- (
+--     'The River and the City (Poetry)',
+--     'This collection of poems explores the profound and often melancholic relationship between the urban sprawl of Dhaka and the surrounding rivers, particularly the Buriganga. Rahman uses the river as a constant metaphor—a symbol of history, memory, and the inevitable flow of time—contrasting its natural rhythm with the chaotic, manufactured pace of the city. The poetry is marked by a deep sense of loss for the city\'s past and a critical eye toward its modern decay, blending lyrical introspection with stark social commentary. It is a defining example of urban poetry in the Bengali tradition, capturing the angst and alienation of the contemporary city dweller.',
+--     7, 3, TRUE
+-- ),
+
+-- -- -------------------------------------------------------------------------
+-- -- AUTHOR 8: Akhtaruzzaman Elias (Category IDs: 1, 10, 2)
+-- -- -------------------------------------------------------------------------
+-- (
+--     'Chilekothar Sepai (The Soldier in the Attic)',
+--     '"Chilekothar Sepai" (The Soldier in the Attic) is a towering, complex, and intensely political novel that focuses on the social and political climate of Dhaka just before the tumultuous events of 1969. The narrative centers on a mentally fractured young man living in an attic room, whose internal descent mirrors the rising political tensions and revolutionary fervor outside. Elias uses his sprawling, detailed, and non-linear narrative to meticulously map the class struggles, cultural identity crises, and suppressed political desires of a nation on the brink of revolt. It is widely considered one of the greatest Bengali novels of the 20th century for its brutal honesty and profound engagement with the reality of urban life and working-class politics.',
+--     8, 1, TRUE
+-- ),
+-- (
+--     'The Art of Social Realism (Essay)',
+--     'Akhtaruzzaman Elias’s critical writings provide a rigorous exploration of his commitment to literary social realism, arguing that fiction must confront and accurately depict the complexities of class structure, political oppression, and historical materialism. This essay delves into the narrative techniques required to render reality—including the use of authentic, often gritty, dialect and non-linear narrative structures—without romanticizing the lives of the working class. Elias passionately defends the role of the writer as a chronicler and critic of society, rejecting purely aesthetic or escapist literature in favor of texts that are deeply embedded in the historical and economic struggles of the Bengali people.',
+--     8, 10, TRUE
+-- ),
+-- (
+--     'The Ghost of the War (Short Story)',
+--     'This haunting short story is a masterful exploration of the deep psychological scars left by the 1971 Liberation War, long after the physical conflict ended. Elias avoids typical heroic narratives, focusing instead on the subtle, pervasive trauma experienced by ordinary citizens, particularly those in the lower and middle classes. The "ghost" is less a literal spirit and more the inescapable memory of violence, betrayal, and loss that continues to affect the protagonists’ daily lives and sanity. Through dense, evocative prose, Elias portrays a society grappling with the moral compromises and the unresolved injustices that emerged from the conflict, emphasizing that true peace remains elusive in the human heart.',
+--     8, 2, TRUE
+-- ),
+
+-- -- -------------------------------------------------------------------------
+-- -- AUTHOR 9: Tahmima Anam (Category IDs: 9, 1, 5)
+-- -- -------------------------------------------------------------------------
+-- (
+--     'A Golden Age: Historical Fiction of 1971',
+--     'The first book in Anam\'s Bengal Trilogy, "A Golden Age" is a deeply affecting work of historical fiction set against the backdrop of the 1971 Bangladesh Liberation War. The story is told through the eyes of Rehana Haque, a widow who is forced into unexpected heroism when her children become involved in the independence movement. Rehana\'s primary motivation is not abstract political ideals, but the fierce, primal need to protect her family and reclaim her home. Anam expertly blends the epic scale of the war with the intimate details of family life, showing how ordinary people are pulled into extraordinary conflict. The novel offers a vital, ground-level perspective on a pivotal moment in South Asian history, exploring themes of motherhood, sacrifice, and nationalism.',
+--     9, 9, TRUE
+-- ),
+-- (
+--     'The Startup and the Village (Novel)',
+--     'This contemporary novel by Tahmima Anam focuses on the modern clash between Bangladesh’s rapid technological development and its enduring rural traditions. The plot typically follows a young, Western-educated entrepreneur who attempts to launch a tech startup that aims to solve a problem in a remote village, only to be confronted by resistance, bureaucracy, and a deep cultural misunderstanding. Anam skillfully explores the generational divide and the tension between globalized aspirations and local realities. The narrative highlights that true progress requires navigating not just technological hurdles, but also the complex social hierarchies and emotional ties that define community life in rural South Asia.',
+--     9, 1, FALSE
+-- ),
+-- (
+--     'My Father\'s Country (Travel Essay)',
+--     'This moving travel essay reflects on Tahmima Anam\'s relationship with her ancestral homeland of Bangladesh, examining the country through the dual lens of a diasporic identity and inherited memory. The work combines personal narrative with thoughtful observations on the social, political, and cultural changes she witnesses upon her return visits. It is a meditation on belonging, the meaning of "home," and the process of reconciling a nation\'s turbulent history with its vibrant, modern reality. The essay beautifully captures the emotional complexity of being connected to a place one did not fully grow up in, making it a powerful piece on global identity.',
+--     9, 5, TRUE
+-- ),
+
+-- -- -------------------------------------------------------------------------
+-- -- AUTHOR 10: Selina Hossain (Category IDs: 1, 8, 10)
+-- -- -------------------------------------------------------------------------
+-- (
+--     'Purnajibaner Britta (Circle of a Full Life)',
+--     'Selina Hossain, known for her powerful focus on women’s issues and socio-political themes, presents "Purnajibaner Britta" (Circle of a Full Life) as a poignant exploration of a woman\'s life across several decades of tumultuous national change. The novel follows the protagonist’s journey from childhood through marriage and old age, meticulously charting her challenges within a patriarchal society and the compromises she makes for survival and dignity. It is a microcosm of the Bangladeshi experience, reflecting major historical and political upheavals through a distinctly personal lens. Hossain uses the narrative to critique entrenched societal norms and celebrate the quiet resilience and intellectual depth of women who often operate at the fringes of power.',
+--     10, 1, TRUE
+-- ),
+-- (
+--     'Children of the War (Short Story)',
+--     'This short story focuses on the devastating and long-lasting impact of the 1971 Liberation War on the children of Bangladesh, exploring their loss of innocence and the struggle to understand the adult world of conflict. Hossain tells a narrative that avoids excessive violence but powerfully depicts the socio-psychological effects of the conflict—such as displacement, orphanhood, and the burden of inherited trauma. The story functions as a crucial piece of children\'s literature that addresses a harsh historical reality, helping younger generations process the complexities of their nation\'s founding while emphasizing themes of hope and rebuilding.',
+--     10, 8, TRUE
+-- ),
+-- (
+--     'The Struggle for Empowerment (Essay)',
+--     'Selina Hossain, using her extensive knowledge of social issues, presents a series of powerful essays that critique the systemic barriers to women\'s empowerment in contemporary Bangladesh. The collection moves beyond simple victim narratives to analyze the legal, economic, and cultural frameworks that perpetuate inequality. She draws on real-life case studies and historical context to argue for concrete policy changes, greater female representation in politics, and a fundamental shift in familial power dynamics. These essays are both academically rigorous and passionately argued, serving as a critical call to action for activists, policymakers, and all citizens committed to gender equity and social justice.',
+--     10, 10, TRUE
+-- ); 
+
+-- DELETE FROM Articles;
+
+-- SELECT
+--     A.title,
+--     A.publication_date,
+--     C.category_name
+-- FROM Articles AS A
+-- JOIN Authors AS T ON A.author_id = T.author_id
+-- JOIN Categories AS C ON A.category_id = C.category_id
+-- WHERE T.name = 'Rabindranath Tagore'
+-- ORDER BY A.publication_date DESC;
+
+-- SELECT
+--     C.category_name,
+--     COUNT(A.article_id) AS total_articles
+-- FROM Categories AS C
+-- LEFT JOIN Articles AS A ON C.category_id = A.category_id
+-- GROUP BY C.category_name
+-- ORDER BY total_articles DESC;
+
+
+-- SELECT
+--     A.title,
+--     T.name AS author_name,
+--     A.content
+-- FROM Articles AS A
+-- JOIN Authors AS T ON A.author_id = T.author_id
+-- WHERE A.is_published = FALSE;
+
+-- UPDATE Articles
+-- SET is_published = TRUE
+-- WHERE is_published = FALSE;
+
