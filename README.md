@@ -67,7 +67,7 @@ MySQL Server installed and running.
 
 1. Clone the Repository
 
-git clone [(https://github.com/kawser0x/DBMS/blob/main/README.md)](https://github.com/kawser0x/DBMS/blob/main/README.md)
+git clone [(https://github.com/kawser0x/DBMS/blob/main/README.md)] https://github.com/kawser0x/DBMS/blob/main/README.md
 cd news-management-system
 
 2. Install Dependencies
